@@ -54,7 +54,7 @@ export function BottomNav({ onMore }: { onMore: () => void }) {
   const { t } = useTranslation("common");
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 flex items-end border-t border-border bg-surface/95 px-1 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-20 flex items-end border-t border-border bg-surface/95 px-1 pb-[min(1.5rem,env(safe-area-inset-bottom))] backdrop-blur lg:hidden">
       {BOTTOM_NAV.map((item) => (
         <Tab key={item.to} item={item} />
       ))}
