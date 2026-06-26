@@ -1,0 +1,41 @@
+{
+  "title": "Glucose",
+  "newReading": "New reading",
+  "editReading": "Edit reading",
+  "value": "Value",
+  "valueUnit": "mg/dL",
+  "valuePlaceholder": "e.g. 120",
+  "type": "Measurement type",
+  "measuredAt": "Date and time",
+  "notes": "Notes",
+  "notesPlaceholder": "Optional notes",
+  "types": {
+    "ayuno": "Fasting",
+    "antes_comer": "Before meal",
+    "despues_comer": "After meal",
+    "antes_dormir": "Before bed",
+    "aleatoria": "Random"
+  },
+  "deleteTitle": "Delete reading",
+  "deleteMessage": "Are you sure you want to delete this reading? This action cannot be undone.",
+  "emptyTitle": "No readings",
+  "emptyMessage": "Log your first glucose reading to see it here.",
+  "searchPlaceholder": "Search by value or note",
+  "history": "History",
+  "trend": "Trend",
+  "trendEmpty": "You need more readings to see the trend.",
+  "zones": {
+    "low": "Low",
+    "normal": "Normal",
+    "high": "High",
+    "critical": "Very high"
+  },
+  "validation": {
+    "valueRequired": "Enter the glucose value",
+    "valueRange": "Value must be between 20 and 600 mg/dL",
+    "valueInteger": "Value must be a whole number",
+    "typeRequired": "Select the measurement type"
+  },
+  "saved": "Reading saved",
+  "added": "Reading logged"
+}

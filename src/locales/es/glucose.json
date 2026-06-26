@@ -1,0 +1,41 @@
+{
+  "title": "Glucosa",
+  "newReading": "Nueva medición",
+  "editReading": "Editar medición",
+  "value": "Valor",
+  "valueUnit": "mg/dL",
+  "valuePlaceholder": "Ej. 120",
+  "type": "Tipo de medición",
+  "measuredAt": "Fecha y hora",
+  "notes": "Notas",
+  "notesPlaceholder": "Notas opcionales",
+  "types": {
+    "ayuno": "Ayuno",
+    "antes_comer": "Antes de comer",
+    "despues_comer": "Después de comer",
+    "antes_dormir": "Antes de dormir",
+    "aleatoria": "Aleatoria"
+  },
+  "deleteTitle": "Eliminar medición",
+  "deleteMessage": "¿Seguro que deseas eliminar esta medición? Esta acción no se puede deshacer.",
+  "emptyTitle": "Sin mediciones",
+  "emptyMessage": "Registra tu primera medición de glucosa para verla aquí.",
+  "searchPlaceholder": "Buscar por valor o nota",
+  "history": "Historial",
+  "trend": "Tendencia",
+  "trendEmpty": "Necesitas más mediciones para ver la tendencia.",
+  "zones": {
+    "low": "Baja",
+    "normal": "Normal",
+    "high": "Alta",
+    "critical": "Muy alta"
+  },
+  "validation": {
+    "valueRequired": "Ingresa el valor de glucosa",
+    "valueRange": "El valor debe estar entre 20 y 600 mg/dL",
+    "valueInteger": "El valor debe ser un número entero",
+    "typeRequired": "Selecciona el tipo de medición"
+  },
+  "saved": "Medición guardada",
+  "added": "Medición registrada"
+}

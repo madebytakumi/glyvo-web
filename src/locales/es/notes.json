@@ -1,0 +1,22 @@
+{
+  "title": "Notas",
+  "newNote": "Nueva nota",
+  "editNote": "Editar nota",
+  "fieldTitle": "Título",
+  "titlePlaceholder": "Ej. Dolor de cabeza",
+  "content": "Contenido",
+  "contentPlaceholder": "Escribe tu nota…",
+  "noteAt": "Fecha y hora",
+  "tags": "Etiquetas",
+  "tagsPlaceholder": "Ej. síntoma, ejercicio",
+  "tagsHint": "Separa las etiquetas con comas",
+  "deleteTitle": "Eliminar nota",
+  "deleteMessage": "¿Seguro que deseas eliminar esta nota? Esta acción no se puede deshacer.",
+  "emptyTitle": "Sin notas",
+  "emptyMessage": "Registra tu primera nota de salud para verla aquí.",
+  "searchPlaceholder": "Buscar por título, contenido o etiqueta",
+  "validation": {
+    "contentRequired": "Escribe el contenido de la nota",
+    "contentMax": "La nota es demasiado larga"
+  }
+}

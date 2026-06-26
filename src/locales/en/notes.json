@@ -1,0 +1,22 @@
+{
+  "title": "Notes",
+  "newNote": "New note",
+  "editNote": "Edit note",
+  "fieldTitle": "Title",
+  "titlePlaceholder": "e.g. Headache",
+  "content": "Content",
+  "contentPlaceholder": "Write your note…",
+  "noteAt": "Date and time",
+  "tags": "Tags",
+  "tagsPlaceholder": "e.g. symptom, exercise",
+  "tagsHint": "Separate tags with commas",
+  "deleteTitle": "Delete note",
+  "deleteMessage": "Are you sure you want to delete this note? This action cannot be undone.",
+  "emptyTitle": "No notes",
+  "emptyMessage": "Log your first health note to see it here.",
+  "searchPlaceholder": "Search by title, content, or tag",
+  "validation": {
+    "contentRequired": "Write the note content",
+    "contentMax": "The note is too long"
+  }
+}

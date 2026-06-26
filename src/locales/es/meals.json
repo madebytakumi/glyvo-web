@@ -1,0 +1,26 @@
+{
+  "title": "Comidas",
+  "newMeal": "Nueva comida",
+  "editMeal": "Editar comida",
+  "type": "Tipo de comida",
+  "description": "Descripción",
+  "descriptionPlaceholder": "Ej. Huevos con jamón",
+  "mealAt": "Fecha y hora",
+  "notes": "Notas",
+  "notesPlaceholder": "Notas opcionales",
+  "types": {
+    "desayuno": "Desayuno",
+    "comida": "Comida",
+    "cena": "Cena",
+    "snack": "Snack"
+  },
+  "deleteTitle": "Eliminar comida",
+  "deleteMessage": "¿Seguro que deseas eliminar esta comida? Esta acción no se puede deshacer.",
+  "emptyTitle": "Sin comidas",
+  "emptyMessage": "Registra tu primera comida para verla aquí.",
+  "searchPlaceholder": "Buscar por descripción o nota",
+  "validation": {
+    "typeRequired": "Selecciona el tipo de comida",
+    "descriptionMax": "La descripción es demasiado larga"
+  }
+}

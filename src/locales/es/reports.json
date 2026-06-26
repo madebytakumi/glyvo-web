@@ -1,0 +1,42 @@
+{
+  "title": "Reportes",
+  "documentTitle": "Reporte de salud · Glyvo",
+  "ranges": {
+    "day": "Hoy",
+    "week": "Últimos 7 días",
+    "month": "Últimos 30 días"
+  },
+  "rangeShort": {
+    "day": "Día",
+    "week": "Semana",
+    "month": "Mes"
+  },
+  "period": "Periodo",
+  "generated": "Generado",
+  "sections": {
+    "glucose": "Glucosa",
+    "insulin": "Insulina",
+    "meals": "Comidas",
+    "medication": "Medicamentos"
+  },
+  "metrics": {
+    "count": "Mediciones",
+    "average": "Promedio",
+    "highest": "Máxima",
+    "lowest": "Mínima",
+    "administrations": "Administraciones",
+    "totalUnits": "Unidades totales",
+    "mealsLogged": "Comidas registradas",
+    "adherence": "Adherencia",
+    "taken": "Tomadas",
+    "skipped": "Omitidas",
+    "missed": "Perdidas"
+  },
+  "mgdl": "mg/dL",
+  "units": "U",
+  "export": "Exportar",
+  "exportPdf": "Exportar PDF",
+  "exportCsv": "Exportar CSV",
+  "exporting": "Generando…",
+  "exportError": "No se pudo exportar el reporte"
+}

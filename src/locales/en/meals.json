@@ -1,0 +1,26 @@
+{
+  "title": "Meals",
+  "newMeal": "New meal",
+  "editMeal": "Edit meal",
+  "type": "Meal type",
+  "description": "Description",
+  "descriptionPlaceholder": "e.g. Eggs with ham",
+  "mealAt": "Date and time",
+  "notes": "Notes",
+  "notesPlaceholder": "Optional notes",
+  "types": {
+    "desayuno": "Breakfast",
+    "comida": "Lunch",
+    "cena": "Dinner",
+    "snack": "Snack"
+  },
+  "deleteTitle": "Delete meal",
+  "deleteMessage": "Are you sure you want to delete this meal? This action cannot be undone.",
+  "emptyTitle": "No meals",
+  "emptyMessage": "Log your first meal to see it here.",
+  "searchPlaceholder": "Search by description or note",
+  "validation": {
+    "typeRequired": "Select the meal type",
+    "descriptionMax": "The description is too long"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Insulina",
+  "newLog": "Registrar insulina",
+  "editLog": "Editar registro",
+  "name": "Insulina",
+  "namePlaceholder": "Ej. Rápida",
+  "units": "Unidades",
+  "unitsShort": "U",
+  "unitsPlaceholder": "Ej. 6",
+  "administeredAt": "Fecha y hora",
+  "notes": "Notas",
+  "notesPlaceholder": "Notas opcionales",
+  "deleteTitle": "Eliminar registro",
+  "deleteMessage": "¿Seguro que deseas eliminar este registro? Esta acción no se puede deshacer.",
+  "emptyTitle": "Sin registros",
+  "emptyMessage": "Registra tu primera administración de insulina para verla aquí.",
+  "searchPlaceholder": "Buscar por insulina o nota",
+  "validation": {
+    "nameRequired": "Indica la insulina",
+    "unitsRequired": "Ingresa las unidades",
+    "unitsNumber": "Las unidades deben ser un número",
+    "unitsRange": "Las unidades deben estar entre 0.5 y 300"
+  }
+}

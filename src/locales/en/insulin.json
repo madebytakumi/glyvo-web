@@ -1,0 +1,24 @@
+{
+  "title": "Insulin",
+  "newLog": "Log insulin",
+  "editLog": "Edit record",
+  "name": "Insulin",
+  "namePlaceholder": "e.g. Rapid",
+  "units": "Units",
+  "unitsShort": "U",
+  "unitsPlaceholder": "e.g. 6",
+  "administeredAt": "Date and time",
+  "notes": "Notes",
+  "notesPlaceholder": "Optional notes",
+  "deleteTitle": "Delete record",
+  "deleteMessage": "Are you sure you want to delete this record? This action cannot be undone.",
+  "emptyTitle": "No records",
+  "emptyMessage": "Log your first insulin administration to see it here.",
+  "searchPlaceholder": "Search by insulin or note",
+  "validation": {
+    "nameRequired": "Enter the insulin",
+    "unitsRequired": "Enter the units",
+    "unitsNumber": "Units must be a number",
+    "unitsRange": "Units must be between 0.5 and 300"
+  }
+}

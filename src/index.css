@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Dark mode driven by a `.dark` class on <html> (set by the theme store). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Semantic color tokens as space-separated RGB channels so they can be themed
+ * at runtime. Mirrors glyvo-app/global.css. `@theme inline` references the
+ * variables (instead of copying values), so toggling `.dark` re-themes every
+ * utility automatically.
+ */
+:root {
+  --bg: 247 249 252;
+  --surface: 255 255 255;
+  --card: 255 255 255;
+  --border: 226 232 240;
+  --text: 15 23 42;
+  --muted: 100 116 139;
+  --primary: 37 99 235;
+  --primary-fg: 255 255 255;
+  --primary-soft: 219 234 254;
+  --success: 22 163 74;
+  --warning: 217 119 6;
+  --danger: 220 38 38;
+  --glucose-low: 234 88 12;
+  --glucose-normal: 22 163 74;
+  --glucose-high: 217 119 6;
+  --glucose-critical: 220 38 38;
+}
+
+.dark {
+  --bg: 9 14 28;
+  --surface: 15 23 42;
+  --card: 30 41 59;
+  --border: 51 65 85;
+  --text: 241 245 249;
+  --muted: 148 163 184;
+  --primary: 96 165 250;
+  --primary-fg: 9 14 28;
+  --primary-soft: 30 58 95;
+  --success: 74 222 128;
+  --warning: 251 191 36;
+  --danger: 248 113 113;
+  --glucose-low: 251 146 60;
+  --glucose-normal: 74 222 128;
+  --glucose-high: 251 191 36;
+  --glucose-critical: 248 113 113;
+}
+
+@theme inline {
+  --color-bg: rgb(var(--bg));
+  --color-surface: rgb(var(--surface));
+  --color-card: rgb(var(--card));
+  --color-border: rgb(var(--border));
+  --color-text: rgb(var(--text));
+  --color-muted: rgb(var(--muted));
+  --color-primary: rgb(var(--primary));
+  --color-primary-fg: rgb(var(--primary-fg));
+  --color-primary-soft: rgb(var(--primary-soft));
+  --color-success: rgb(var(--success));
+  --color-warning: rgb(var(--warning));
+  --color-danger: rgb(var(--danger));
+  --color-glucose-low: rgb(var(--glucose-low));
+  --color-glucose-normal: rgb(var(--glucose-normal));
+  --color-glucose-high: rgb(var(--glucose-high));
+  --color-glucose-critical: rgb(var(--glucose-critical));
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

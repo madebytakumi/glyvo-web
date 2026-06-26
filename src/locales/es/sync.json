@@ -1,0 +1,7 @@
+{
+  "idle": "Sincronizado",
+  "syncing": "Sincronizando…",
+  "error": "Error de sincronización",
+  "pending": "Cambios pendientes",
+  "offline": "Sin conexión"
+}
