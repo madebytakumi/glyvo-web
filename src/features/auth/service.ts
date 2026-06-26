@@ -17,7 +17,13 @@ export const authService = {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: displayName ? { display_name: displayName } : undefined },
+      options: {
+        // Return the confirmation link to the same origin the user signed up on
+        // (prod → prod, local → local). The origin must be allow-listed in
+        // Supabase → Authentication → URL Configuration → Redirect URLs.
+        emailRedirectTo: window.location.origin,
+        data: displayName ? { display_name: displayName } : undefined,
+      },
     });
     if (error) throw error;
   },

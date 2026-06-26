@@ -74,3 +74,16 @@ proveedor. SPA: redirige todas las rutas a `index.html`.
 
 El service worker cachea el app-shell (offline-first del shell); **los datos
 requieren conexión** (online directo a Supabase).
+
+### Auth — URL de confirmación de correo
+
+El enlace de confirmación de registro usa el **Site URL** del proyecto. En
+**Supabase → Authentication → URL Configuration**:
+
+- **Site URL**: la URL de producción (p. ej. `https://glyvo.madebytakumi.com.mx`).
+- **Redirect URLs** (allowlist):
+  - `https://glyvo.madebytakumi.com.mx/**`
+  - `http://localhost:5173/**` (desarrollo local)
+
+El `signUp` pasa `emailRedirectTo: window.location.origin`, así que el enlace
+regresa al mismo origen donde se registró el usuario (debe estar en la allowlist).
