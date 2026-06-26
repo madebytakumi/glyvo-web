@@ -6,6 +6,8 @@ import { Button } from "@/components/Button";
 import { Spinner } from "@/components/Spinner";
 import { cn } from "@/lib/cn";
 import { formatDateTime } from "@/lib/datetime";
+import { GlucoseTrendCard } from "@/components/charts/GlucoseTrendCard";
+import { AdherenceDonutCard } from "@/components/charts/AdherenceDonutCard";
 import { useReport } from "../queries";
 import type { ReportStrings } from "../export";
 import type { Report, ReportRangeKind } from "../model";
@@ -77,6 +79,12 @@ export function ReportsPage() {
         </div>
       ) : (
         <>
+          <div className="mb-4 grid gap-4 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+              <GlucoseTrendCard days={range === "month" ? 30 : range === "week" ? 7 : 1} />
+            </div>
+            <AdherenceDonutCard stats={report.medication} title={t("sections.medication")} />
+          </div>
           <ReportSummary report={report} />
           <div className="mt-4 flex gap-2">
             <Button

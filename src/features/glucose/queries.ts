@@ -34,6 +34,17 @@ export function useGlucoseReading(id: string) {
   });
 }
 
+export function useGlucoseTrend(days = 7) {
+  const userId = useUserId();
+  return useQuery({
+    queryKey: userId
+      ? (["glucose", "trend", userId, days] as const)
+      : ["glucose", "disabled"],
+    queryFn: () => glucoseService.trend(userId as string, days),
+    enabled: !!userId,
+  });
+}
+
 export function useGlucoseDailyStats() {
   const userId = useUserId();
   return useQuery({

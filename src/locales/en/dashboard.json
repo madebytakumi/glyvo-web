@@ -23,5 +23,7 @@
   "medsToday": "Today's medications",
   "medsPending": "{{count}} pending",
   "medsAllDone": "All caught up",
-  "adherence": "Adherence"
+  "adherence": "Adherence",
+  "glucoseTrend": "Glucose trend (7 days)",
+  "trendEmpty": "You need more readings to see the trend."
 }

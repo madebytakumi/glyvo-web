@@ -7,8 +7,9 @@ import { Spinner } from "@/components/Spinner";
 import { useAuthStore } from "@/features/auth/store";
 import { useGlucoseDailyStats } from "@/features/glucose/queries";
 import { classifyGlucose, zoneToTone } from "@/features/glucose/zones";
-import { useTodayDoses } from "@/features/medications/queries";
-import { AdherenceCard } from "@/features/medications/components/AdherenceCard";
+import { useAdherence, useTodayDoses } from "@/features/medications/queries";
+import { GlucoseTrendCard } from "@/components/charts/GlucoseTrendCard";
+import { AdherenceDonutCard } from "@/components/charts/AdherenceDonutCard";
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
@@ -21,6 +22,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 export function DashboardPage() {
   const { t } = useTranslation("dashboard");
+  const { t: tMed } = useTranslation("medications");
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const displayName =
@@ -30,6 +32,7 @@ export function DashboardPage() {
 
   const { data: stats, isLoading } = useGlucoseDailyStats();
   const { data: doses } = useTodayDoses();
+  const { data: adherence } = useAdherence(7);
   const pending = doses?.filter((d) => d.status === "pending").length ?? 0;
 
   const actions = [
@@ -84,7 +87,12 @@ export function DashboardPage() {
         </div>
       </Card>
 
-      <AdherenceCard days={7} />
+      <div className="mb-6 grid gap-4 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <GlucoseTrendCard days={7} />
+        </div>
+        <AdherenceDonutCard stats={adherence} title={tMed("adherenceTitle", { days: 7 })} />
+      </div>
 
       <h2 className="mb-2 mt-6 text-sm font-medium text-muted">{t("quickActions")}</h2>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
