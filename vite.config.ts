@@ -12,11 +12,17 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg"],
+      includeAssets: ["favicon.png", "apple-touch-icon.png"],
+      workbox: {
+        // Keep the install lean: the heavy @react-pdf chunk (PDF export) is
+        // lazy-loaded on demand and excluded from the precache manifest.
+        globIgnores: ["**/exportWeb-*.js"],
+      },
       manifest: {
         name: "Glyvo",
         short_name: "Glyvo",
         description: "Tu registro personal de salud y diabetes",
+        lang: "es",
         theme_color: "#2563EB",
         background_color: "#F7F9FC",
         display: "standalone",
