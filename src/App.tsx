@@ -27,6 +27,7 @@ import { MedicationsTodayPage } from "@/features/medications/pages/MedicationsTo
 import { MedicationCatalogPage } from "@/features/medications/pages/MedicationCatalogPage";
 import { MedicationFormPage } from "@/features/medications/pages/MedicationFormPage";
 import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
+import { ReportsPage } from "@/features/reports/pages/ReportsPage";
 
 function AppRoutes() {
   const session = useAuthStore((s) => s.session);
@@ -64,7 +65,7 @@ function AppRoutes() {
         <Route path="notes" element={<NoteListPage />} />
         <Route path="notes/new" element={<NoteFormPage />} />
         <Route path="notes/:id" element={<NoteFormPage />} />
-        <Route path="reports" element={<Placeholder titleKey="nav.reports" />} />
+        <Route path="reports" element={<ReportsPage />} />
         <Route path="settings" element={<Placeholder titleKey="nav.settings" />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

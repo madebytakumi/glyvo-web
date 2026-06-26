@@ -117,6 +117,9 @@ export function createMedicationsService(
     removeSchedule: (id: string) => scheduleRepo.softDelete(id),
     listSchedules: (medicationId: string) =>
       scheduleRepo.listByMedication(medicationId),
+    listAllSchedules: (userId: string) => scheduleRepo.listByUser(userId),
+    listIntakeLogs: (userId: string, startIso: string, endIso: string) =>
+      intakeRepo.listForRange(userId, startIso, endIso),
     markTaken: (userId: string, occ: DoseOccurrence) => mark(userId, occ, "taken"),
     markSkipped: (userId: string, occ: DoseOccurrence) =>
       mark(userId, occ, "skipped"),
