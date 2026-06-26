@@ -205,8 +205,13 @@ function fromIntakeRow(row: DbRow): IntakeLog {
   return {
     ...mapBase(row),
     medicationId: row.medication_id,
-    scheduledTime: row.scheduled_time,
-    actualIntakeTime: row.actual_intake_time ?? null,
+    // Normalize Postgres timestamptz (e.g. "...+00:00") back to canonical ISO
+    // ("...000Z") so it matches the occurrence's scheduledTime when the
+    // adherence engine pairs logs to doses via occurrenceKey.
+    scheduledTime: new Date(row.scheduled_time).toISOString(),
+    actualIntakeTime: row.actual_intake_time
+      ? new Date(row.actual_intake_time).toISOString()
+      : null,
     status: row.status as IntakeStatus,
   };
 }
