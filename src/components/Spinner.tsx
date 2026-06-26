@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { MascotPair } from "./mascots/MascotPair";
 
 export function Spinner({ className }: { className?: string }) {
   return (
@@ -15,8 +16,9 @@ export function Spinner({ className }: { className?: string }) {
 
 export function FullScreenSpinner() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-bg">
-      <Spinner className="size-10" />
+    <div className="flex min-h-screen flex-col items-center justify-center gap-5 bg-bg">
+      <MascotPair size={80} />
+      <Spinner className="size-8" />
     </div>
   );
 }

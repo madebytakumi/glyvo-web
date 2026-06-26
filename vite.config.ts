@@ -12,7 +12,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.png", "apple-touch-icon.png"],
+      includeAssets: ["favicon.png", "apple-touch-icon.png", "mascots.svg"],
       workbox: {
         // Keep the install lean: the heavy @react-pdf chunk (PDF export) is
         // lazy-loaded on demand and excluded from the precache manifest.

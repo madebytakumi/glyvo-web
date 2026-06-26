@@ -41,5 +41,10 @@
   },
   "empty": "Sin registros todavía",
   "saving": "Guardando…",
-  "deleteConfirm": "¿Eliminar este registro?"
+  "deleteConfirm": "¿Eliminar este registro?",
+  "notFound": {
+    "title": "Página no encontrada",
+    "body": "Estos perritos no encontraron lo que buscas.",
+    "goHome": "Ir al inicio"
+  }
 }

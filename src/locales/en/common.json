@@ -41,5 +41,10 @@
   },
   "empty": "No records yet",
   "saving": "Saving…",
-  "deleteConfirm": "Delete this record?"
+  "deleteConfirm": "Delete this record?",
+  "notFound": {
+    "title": "Page not found",
+    "body": "These pups couldn't find what you're looking for.",
+    "goHome": "Go home"
+  }
 }

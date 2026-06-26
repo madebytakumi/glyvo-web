@@ -7,6 +7,7 @@ import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { Card } from "@/components/Card";
 import { FormField } from "@/components/FormField";
+import { MascotPair } from "@/components/mascots/MascotPair";
 import { authService } from "../service";
 import { signInSchema, type SignInValues } from "../schema";
 
@@ -82,8 +83,11 @@ export function AuthShell({
   return (
     <div className="flex min-h-screen items-center justify-center bg-bg p-4">
       <Card className="w-full max-w-sm p-6">
-        <h1 className="text-2xl font-semibold text-text">{title}</h1>
-        <p className="mb-6 mt-1 text-muted">{subtitle}</p>
+        <div className="mb-4 flex justify-center">
+          <MascotPair size={84} />
+        </div>
+        <h1 className="text-center text-2xl font-semibold text-text">{title}</h1>
+        <p className="mb-6 mt-1 text-center text-muted">{subtitle}</p>
         {children}
       </Card>
     </div>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="28" fill="#EDE9FE"/>
+
+  <!-- Beagle -->
+  <ellipse cx="27" cy="66" rx="6.5" ry="14" fill="#8B5A2B"/>
+  <ellipse cx="61" cy="66" rx="6.5" ry="14" fill="#8B5A2B"/>
+  <circle cx="44" cy="62" r="17" fill="#FBF4EA"/>
+  <path d="M28 58 Q44 42 60 58 Q52 50 44 50 Q36 50 28 58 Z" fill="#C98A4B"/>
+  <circle cx="37" cy="60" r="3.2" fill="#2A2622"/>
+  <circle cx="51" cy="60" r="3.2" fill="#2A2622"/>
+  <ellipse cx="44" cy="70" rx="8" ry="6.5" fill="#FFFFFF"/>
+  <ellipse cx="44" cy="67.5" rx="2.8" ry="2" fill="#1C1916"/>
+
+  <!-- Pug -->
+  <ellipse cx="74" cy="53" rx="6" ry="9" fill="#3A332E"/>
+  <ellipse cx="98" cy="53" rx="6" ry="9" fill="#3A332E"/>
+  <circle cx="86" cy="64" r="18" fill="#E3C2A0"/>
+  <path d="M78 57 Q86 53 94 57" stroke="#C9A579" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+  <circle cx="79" cy="62" r="3.6" fill="#2A2622"/>
+  <circle cx="93" cy="62" r="3.6" fill="#2A2622"/>
+  <ellipse cx="86" cy="72" rx="9.5" ry="7.5" fill="#3A332E"/>
+  <ellipse cx="86" cy="69.5" rx="3.2" ry="2.2" fill="#1C1916"/>
+</svg>

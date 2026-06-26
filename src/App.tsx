@@ -12,6 +12,7 @@ import { authService } from "@/features/auth/service";
 import { initTheme } from "@/theme/themeStore";
 import { FullScreenSpinner } from "@/components/Spinner";
 import { AppLayout } from "@/routes/AppLayout";
+import { NotFound } from "@/routes/NotFound";
 import { SignInPage } from "@/features/auth/pages/SignInPage";
 import { SignUpPage } from "@/features/auth/pages/SignUpPage";
 import { GlucoseListPage } from "@/features/glucose/pages/GlucoseListPage";
@@ -67,8 +68,8 @@ function AppRoutes() {
         <Route path="notes/:id" element={<NoteFormPage />} />
         <Route path="reports" element={<ReportsPage />} />
         <Route path="settings" element={<SettingsPage />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
