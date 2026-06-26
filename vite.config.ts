@@ -23,8 +23,8 @@ export default defineConfig({
         short_name: "Glyvo",
         description: "Tu registro personal de salud y diabetes",
         lang: "es",
-        theme_color: "#2563EB",
-        background_color: "#F7F9FC",
+        theme_color: "#8B5CF6",
+        background_color: "#FAF8FF",
         display: "standalone",
         start_url: "/",
         icons: [

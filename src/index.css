@@ -9,16 +9,23 @@
  * variables (instead of copying values), so toggling `.dark` re-themes every
  * utility automatically.
  */
+/*
+ * Pastel purple chrome. Interactive `--primary` is a deeper violet so text on
+ * buttons keeps AA contrast; surfaces/accents are pastel lilac. Status colors
+ * (success/warning/danger) and the glucose zones stay saturated and clearly
+ * distinct for medical clarity — do NOT pastel-ize them.
+ */
 :root {
-  --bg: 247 249 252;
+  --bg: 250 248 255;
   --surface: 255 255 255;
   --card: 255 255 255;
-  --border: 226 232 240;
-  --text: 15 23 42;
-  --muted: 100 116 139;
-  --primary: 37 99 235;
+  --border: 233 226 250;
+  --text: 30 27 45;
+  --muted: 113 108 138;
+  --primary: 139 92 246;
   --primary-fg: 255 255 255;
-  --primary-soft: 219 234 254;
+  --primary-soft: 237 233 254;
+  --accent-pastel: 196 181 253;
   --success: 22 163 74;
   --warning: 217 119 6;
   --danger: 220 38 38;
@@ -29,15 +36,16 @@
 }
 
 .dark {
-  --bg: 9 14 28;
-  --surface: 15 23 42;
-  --card: 30 41 59;
-  --border: 51 65 85;
-  --text: 241 245 249;
-  --muted: 148 163 184;
-  --primary: 96 165 250;
-  --primary-fg: 9 14 28;
-  --primary-soft: 30 58 95;
+  --bg: 23 19 38;
+  --surface: 35 28 54;
+  --card: 43 35 66;
+  --border: 60 50 84;
+  --text: 237 233 245;
+  --muted: 163 153 184;
+  --primary: 167 139 250;
+  --primary-fg: 23 19 38;
+  --primary-soft: 49 40 84;
+  --accent-pastel: 167 139 250;
   --success: 74 222 128;
   --warning: 251 191 36;
   --danger: 248 113 113;
@@ -57,6 +65,7 @@
   --color-primary: rgb(var(--primary));
   --color-primary-fg: rgb(var(--primary-fg));
   --color-primary-soft: rgb(var(--primary-soft));
+  --color-accent-pastel: rgb(var(--accent-pastel));
   --color-success: rgb(var(--success));
   --color-warning: rgb(var(--warning));
   --color-danger: rgb(var(--danger));

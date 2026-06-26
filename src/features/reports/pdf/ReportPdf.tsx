@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 11, color: "#0F172A", fontFamily: "Helvetica" },
   title: { fontSize: 18, marginBottom: 2 },
   meta: { fontSize: 9, color: "#64748B", marginBottom: 16 },
-  section: { fontSize: 12, color: "#2563EB", marginTop: 14, marginBottom: 4 },
+  section: { fontSize: 12, color: "#7C3AED", marginTop: 14, marginBottom: 4 },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
