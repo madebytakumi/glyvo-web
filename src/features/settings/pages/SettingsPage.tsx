@@ -9,6 +9,7 @@ import type { AppLanguage } from "@/locales";
 import { useAuthStore } from "@/features/auth/store";
 import { authService } from "@/features/auth/service";
 import { useThemeStore, type ThemePreference } from "@/theme/themeStore";
+import { InstallSection } from "../components/InstallSection";
 
 interface Segment<T extends string> {
   value: T;
@@ -84,6 +85,8 @@ export function SettingsPage() {
       <Section title={t("appearance")}>
         <Segmented value={preference} options={themeOptions} onChange={setPreference} />
       </Section>
+
+      <InstallSection />
 
       <Section title={t("account")}>
         <p className="mb-3 text-text">{user?.email}</p>

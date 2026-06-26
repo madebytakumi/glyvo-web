@@ -7,6 +7,17 @@
   "themeSystem": "Sistema",
   "themeLight": "Claro",
   "themeDark": "Oscuro",
+  "install": {
+    "title": "Instalar app",
+    "intro": "Tenla a un toque desde tu pantalla de inicio.",
+    "button": "Instalar app",
+    "installed": "La app ya está instalada en este dispositivo.",
+    "iosIntro": "Para instalarla en tu iPhone o iPad con Safari:",
+    "iosStep1": "Toca el botón Compartir",
+    "iosStep2": "Elige \"Agregar a inicio\"",
+    "iosStep3": "Confirma con \"Agregar\"",
+    "desktopHint": "Abre el menú de tu navegador y elige \"Instalar app\"."
+  },
   "account": "Cuenta",
   "signOut": "Cerrar sesión",
   "sync": "Sincronización",

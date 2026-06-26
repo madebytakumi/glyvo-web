@@ -7,6 +7,17 @@
   "themeSystem": "System",
   "themeLight": "Light",
   "themeDark": "Dark",
+  "install": {
+    "title": "Install app",
+    "intro": "Keep it one tap away on your home screen.",
+    "button": "Install app",
+    "installed": "The app is already installed on this device.",
+    "iosIntro": "To install it on your iPhone or iPad with Safari:",
+    "iosStep1": "Tap the Share button",
+    "iosStep2": "Choose \"Add to Home Screen\"",
+    "iosStep3": "Confirm with \"Add\"",
+    "desktopHint": "Open your browser menu and choose \"Install app\"."
+  },
   "account": "Account",
   "signOut": "Sign out",
   "sync": "Sync",
