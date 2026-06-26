@@ -15,6 +15,8 @@ import { AppLayout } from "@/routes/AppLayout";
 import { Placeholder } from "@/routes/Placeholder";
 import { SignInPage } from "@/features/auth/pages/SignInPage";
 import { SignUpPage } from "@/features/auth/pages/SignUpPage";
+import { GlucoseListPage } from "@/features/glucose/pages/GlucoseListPage";
+import { GlucoseFormPage } from "@/features/glucose/pages/GlucoseFormPage";
 
 function AppRoutes() {
   const session = useAuthStore((s) => s.session);
@@ -36,7 +38,9 @@ function AppRoutes() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<Placeholder titleKey="nav.dashboard" />} />
-        <Route path="glucose" element={<Placeholder titleKey="nav.glucose" />} />
+        <Route path="glucose" element={<GlucoseListPage />} />
+        <Route path="glucose/new" element={<GlucoseFormPage />} />
+        <Route path="glucose/:id" element={<GlucoseFormPage />} />
         <Route path="meals" element={<Placeholder titleKey="nav.meals" />} />
         <Route path="insulin" element={<Placeholder titleKey="nav.insulin" />} />
         <Route
