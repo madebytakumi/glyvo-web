@@ -57,7 +57,7 @@ export function QuickActionsFab() {
         role="presentation"
       />
 
-      <div className="fixed bottom-[calc(3rem_+_env(safe-area-inset-bottom))] right-4 z-40 flex flex-col items-end gap-3 lg:bottom-6 lg:right-6">
+      <div className="fixed bottom-[calc(1.5rem_+_env(safe-area-inset-bottom))] right-4 z-40 flex flex-col items-end gap-3 lg:bottom-6 lg:right-6">
         <ul className="flex flex-col items-end gap-3">
           {ACTIONS.map(({ key, to, icon: Icon }, index) => {
             // Items nearest the FAB lead on open and trail on close.
