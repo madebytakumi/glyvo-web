@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/cn";
-import { SECONDARY_NAV } from "./navItems";
+import { MORE_NAV } from "./navItems";
 
 interface MoreSheetProps {
   open: boolean;
@@ -36,7 +36,7 @@ export function MoreSheet({ open, onClose }: MoreSheetProps) {
       >
         <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-border" />
         <nav className="grid grid-cols-2 gap-2 pb-2">
-          {SECONDARY_NAV.map(({ to, key, icon: Icon }) => (
+          {MORE_NAV.map(({ to, key, icon: Icon }) => (
             <NavLink
               key={to}
               to={to}

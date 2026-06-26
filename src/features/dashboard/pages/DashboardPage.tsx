@@ -10,6 +10,7 @@ import { classifyGlucose, zoneToTone } from "@/features/glucose/zones";
 import { useAdherence, useTodayDoses } from "@/features/medications/queries";
 import { GlucoseTrendCard } from "@/components/charts/GlucoseTrendCard";
 import { AdherenceDonutCard } from "@/components/charts/AdherenceDonutCard";
+import { QuickActionsFab } from "@/components/QuickActionsFab";
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
@@ -34,14 +35,6 @@ export function DashboardPage() {
   const { data: doses } = useTodayDoses();
   const { data: adherence } = useAdherence(7);
   const pending = doses?.filter((d) => d.status === "pending").length ?? 0;
-
-  const actions = [
-    { label: t("registerGlucose"), to: "/glucose/new" },
-    { label: t("registerMeal"), to: "/meals/new" },
-    { label: t("registerInsulin"), to: "/insulin/new" },
-    { label: t("markMedicationTaken"), to: "/medications" },
-    { label: t("addNote"), to: "/notes/new" },
-  ];
 
   return (
     <div>
@@ -94,14 +87,7 @@ export function DashboardPage() {
         <AdherenceDonutCard stats={adherence} title={tMed("adherenceTitle", { days: 7 })} />
       </div>
 
-      <h2 className="mb-2 mt-6 text-sm font-medium text-muted">{t("quickActions")}</h2>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {actions.map((a) => (
-          <Button key={a.to} variant="secondary" onClick={() => navigate(a.to)}>
-            {a.label}
-          </Button>
-        ))}
-      </div>
+      <QuickActionsFab />
     </div>
   );
 }
