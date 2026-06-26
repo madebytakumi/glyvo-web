@@ -27,7 +27,11 @@ const ACTIONS: QuickAction[] = [
 ];
 
 const STAGGER_MS = 35;
-const RADIUS = 120; // distance from the FAB center to each item
+const RADIUS = 92; // distance from the FAB center to each item
+// Arc sweep (degrees): from near-straight-up to near-straight-left. Slightly
+// wider than a quarter so the items keep their spacing at this shorter radius.
+const ARC_START = 78;
+const ARC_END = 192;
 
 /**
  * Android/Material-style floating action button (bottom-right) that fans its
@@ -60,8 +64,9 @@ export function QuickActionsFab() {
 
       <div className="fixed bottom-20 right-4 z-40 size-14 lg:bottom-6 lg:right-6">
         {ACTIONS.map(({ key, to, icon: Icon }, index) => {
-          // Spread items from straight up (90°) to straight left (180°).
-          const angle = ((90 + (index * 90) / (count - 1)) * Math.PI) / 180;
+          // Spread items along the arc from near-up to near-left.
+          const deg = ARC_START + (index * (ARC_END - ARC_START)) / (count - 1);
+          const angle = (deg * Math.PI) / 180;
           const x = open ? Math.cos(angle) * RADIUS : 0;
           const y = open ? -Math.sin(angle) * RADIUS : 0;
           const delay = (open ? index : count - 1 - index) * STAGGER_MS;
@@ -79,7 +84,7 @@ export function QuickActionsFab() {
                 transitionDelay: `${delay}ms`,
               }}
               className={cn(
-                "absolute bottom-1.5 right-1.5 flex size-11 items-center justify-center rounded-full border border-border bg-surface text-primary shadow-md",
+                "absolute bottom-2 right-2 flex size-10 items-center justify-center rounded-full border border-border bg-surface text-primary shadow-md",
                 "transition-[transform,opacity] duration-200 ease-out motion-reduce:transition-none",
                 "hover:bg-primary-soft",
                 open ? "opacity-100" : "pointer-events-none opacity-0",
