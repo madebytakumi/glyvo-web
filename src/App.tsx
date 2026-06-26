@@ -26,6 +26,7 @@ import { NoteFormPage } from "@/features/notes/pages/NoteFormPage";
 import { MedicationsTodayPage } from "@/features/medications/pages/MedicationsTodayPage";
 import { MedicationCatalogPage } from "@/features/medications/pages/MedicationCatalogPage";
 import { MedicationFormPage } from "@/features/medications/pages/MedicationFormPage";
+import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 
 function AppRoutes() {
   const session = useAuthStore((s) => s.session);
@@ -46,7 +47,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
-        <Route index element={<Placeholder titleKey="nav.dashboard" />} />
+        <Route index element={<DashboardPage />} />
         <Route path="glucose" element={<GlucoseListPage />} />
         <Route path="glucose/new" element={<GlucoseFormPage />} />
         <Route path="glucose/:id" element={<GlucoseFormPage />} />
