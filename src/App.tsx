@@ -17,6 +17,12 @@ import { SignInPage } from "@/features/auth/pages/SignInPage";
 import { SignUpPage } from "@/features/auth/pages/SignUpPage";
 import { GlucoseListPage } from "@/features/glucose/pages/GlucoseListPage";
 import { GlucoseFormPage } from "@/features/glucose/pages/GlucoseFormPage";
+import { MealListPage } from "@/features/meals/pages/MealListPage";
+import { MealFormPage } from "@/features/meals/pages/MealFormPage";
+import { InsulinListPage } from "@/features/insulin/pages/InsulinListPage";
+import { InsulinFormPage } from "@/features/insulin/pages/InsulinFormPage";
+import { NoteListPage } from "@/features/notes/pages/NoteListPage";
+import { NoteFormPage } from "@/features/notes/pages/NoteFormPage";
 
 function AppRoutes() {
   const session = useAuthStore((s) => s.session);
@@ -41,13 +47,19 @@ function AppRoutes() {
         <Route path="glucose" element={<GlucoseListPage />} />
         <Route path="glucose/new" element={<GlucoseFormPage />} />
         <Route path="glucose/:id" element={<GlucoseFormPage />} />
-        <Route path="meals" element={<Placeholder titleKey="nav.meals" />} />
-        <Route path="insulin" element={<Placeholder titleKey="nav.insulin" />} />
+        <Route path="meals" element={<MealListPage />} />
+        <Route path="meals/new" element={<MealFormPage />} />
+        <Route path="meals/:id" element={<MealFormPage />} />
+        <Route path="insulin" element={<InsulinListPage />} />
+        <Route path="insulin/new" element={<InsulinFormPage />} />
+        <Route path="insulin/:id" element={<InsulinFormPage />} />
         <Route
           path="medications"
           element={<Placeholder titleKey="nav.medications" />}
         />
-        <Route path="notes" element={<Placeholder titleKey="nav.notes" />} />
+        <Route path="notes" element={<NoteListPage />} />
+        <Route path="notes/new" element={<NoteFormPage />} />
+        <Route path="notes/:id" element={<NoteFormPage />} />
         <Route path="reports" element={<Placeholder titleKey="nav.reports" />} />
         <Route path="settings" element={<Placeholder titleKey="nav.settings" />} />
       </Route>
