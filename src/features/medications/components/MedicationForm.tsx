@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
-import { TextArea } from "@/components/TextArea";
-import { DateTimeField } from "@/components/DateTimeField";
-import { FormField } from "@/components/FormField";
+import { TextField } from "@/components/fields/TextField";
+import { TextAreaField } from "@/components/fields/TextAreaField";
+import { DateField } from "@/components/fields/DateField";
+import { SwitchField } from "@/components/fields/SwitchField";
 import { medicationFormSchema, type MedicationFormValues } from "../schema";
 import type { Medication, MedicationInput } from "../model";
 
@@ -26,6 +26,7 @@ export function MedicationForm({
   const { t: tc } = useTranslation("common");
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -54,27 +55,58 @@ export function MedicationForm({
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-4">
-      <FormField label={t("name")} htmlFor="name" error={errors.name?.message}>
-        <Input id="name" placeholder={t("namePlaceholder")} invalid={!!errors.name} {...register("name")} />
-      </FormField>
-      <FormField label={t("dosage")} htmlFor="dosage">
-        <Input id="dosage" placeholder={t("dosagePlaceholder")} {...register("dosage")} />
-      </FormField>
-      <FormField label={t("instructions")} htmlFor="instructions">
-        <TextArea id="instructions" placeholder={t("instructionsPlaceholder")} {...register("instructions")} />
-      </FormField>
+      <TextField
+        label={t("name")}
+        placeholder={t("namePlaceholder")}
+        error={errors.name?.message}
+        {...register("name")}
+      />
+      <TextField
+        label={t("dosage")}
+        placeholder={t("dosagePlaceholder")}
+        {...register("dosage")}
+      />
+      <TextAreaField
+        label={t("instructions")}
+        placeholder={t("instructionsPlaceholder")}
+        {...register("instructions")}
+      />
       <div className="grid grid-cols-2 gap-3">
-        <FormField label={t("hasStartDate")} htmlFor="startDate">
-          <DateTimeField id="startDate" mode="date" {...register("startDate")} />
-        </FormField>
-        <FormField label={t("hasEndDate")} htmlFor="endDate" error={errors.endDate?.message}>
-          <DateTimeField id="endDate" mode="date" invalid={!!errors.endDate} {...register("endDate")} />
-        </FormField>
+        <Controller
+          control={control}
+          name="startDate"
+          render={({ field }) => (
+            <DateField
+              label={t("hasStartDate")}
+              value={field.value ?? ""}
+              onChange={field.onChange}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="endDate"
+          render={({ field, fieldState }) => (
+            <DateField
+              label={t("hasEndDate")}
+              value={field.value ?? ""}
+              onChange={field.onChange}
+              error={fieldState.error?.message}
+            />
+          )}
+        />
       </div>
-      <label className="flex items-center gap-2 text-text">
-        <input type="checkbox" className="size-4" {...register("active")} />
-        {t("active")}
-      </label>
+      <Controller
+        control={control}
+        name="active"
+        render={({ field }) => (
+          <SwitchField
+            label={t("active")}
+            checked={field.value}
+            onChange={field.onChange}
+          />
+        )}
+      />
 
       <div className="mt-2 flex justify-end gap-2">
         <Button type="button" variant="secondary" onClick={onCancel}>

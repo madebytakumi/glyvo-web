@@ -1,11 +1,10 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/Button";
-import { TextArea } from "@/components/TextArea";
-import { Select } from "@/components/Select";
-import { DateTimeField } from "@/components/DateTimeField";
-import { FormField } from "@/components/FormField";
+import { TextAreaField } from "@/components/fields/TextAreaField";
+import { SelectField } from "@/components/fields/SelectField";
+import { DateTimeField } from "@/components/fields/DateTimeField";
 import { fromDateTimeLocal, toDateTimeLocal, nowIso } from "@/lib/datetime";
 import { mealFormSchema, type MealFormValues } from "../schema";
 import { MEAL_TYPES, type Meal, type MealInput } from "../model";
@@ -22,6 +21,7 @@ export function MealForm({ initial, submitting, onSubmit, onCancel }: MealFormPr
   const { t: tc } = useTranslation("common");
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -51,18 +51,41 @@ export function MealForm({ initial, submitting, onSubmit, onCancel }: MealFormPr
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-4">
-      <FormField label={t("type")} htmlFor="type" error={errors.type?.message}>
-        <Select id="type" options={typeOptions} invalid={!!errors.type} {...register("type")} />
-      </FormField>
-      <FormField label={t("description")} htmlFor="description" error={errors.description?.message}>
-        <TextArea id="description" placeholder={t("descriptionPlaceholder")} {...register("description")} />
-      </FormField>
-      <FormField label={t("mealAt")} htmlFor="mealAt" error={errors.mealAt?.message}>
-        <DateTimeField id="mealAt" invalid={!!errors.mealAt} {...register("mealAt")} />
-      </FormField>
-      <FormField label={t("notes")} htmlFor="notes">
-        <TextArea id="notes" placeholder={t("notesPlaceholder")} {...register("notes")} />
-      </FormField>
+      <Controller
+        control={control}
+        name="type"
+        render={({ field, fieldState }) => (
+          <SelectField
+            label={t("type")}
+            value={field.value}
+            onChange={field.onChange}
+            options={typeOptions}
+            error={fieldState.error?.message}
+          />
+        )}
+      />
+      <TextAreaField
+        label={t("description")}
+        placeholder={t("descriptionPlaceholder")}
+        error={errors.description?.message}
+        {...register("description")}
+      />
+      <Controller
+        control={control}
+        name="mealAt"
+        render={({ field, fieldState }) => (
+          <DateTimeField
+            value={field.value}
+            onChange={field.onChange}
+            error={fieldState.error?.message}
+          />
+        )}
+      />
+      <TextAreaField
+        label={t("notes")}
+        placeholder={t("notesPlaceholder")}
+        {...register("notes")}
+      />
       <div className="mt-2 flex justify-end gap-2">
         <Button type="button" variant="secondary" onClick={onCancel}>
           {tc("cancel")}

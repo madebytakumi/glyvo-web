@@ -1,14 +1,12 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
-import { TextArea } from "@/components/TextArea";
-import { Select } from "@/components/Select";
-import { DateTimeField } from "@/components/DateTimeField";
-import { FormField } from "@/components/FormField";
-import { fromDateTimeLocal, toDateTimeLocal } from "@/lib/datetime";
-import { nowIso } from "@/lib/datetime";
+import { TextField } from "@/components/fields/TextField";
+import { TextAreaField } from "@/components/fields/TextAreaField";
+import { SelectField } from "@/components/fields/SelectField";
+import { DateTimeField } from "@/components/fields/DateTimeField";
+import { fromDateTimeLocal, toDateTimeLocal, nowIso } from "@/lib/datetime";
 import { glucoseFormSchema, type GlucoseFormValues } from "../schema";
 import { GLUCOSE_TYPES, type GlucoseInput, type GlucoseReading } from "../model";
 
@@ -29,6 +27,7 @@ export function GlucoseForm({
   const { t: tc } = useTranslation("common");
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -58,27 +57,45 @@ export function GlucoseForm({
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-4">
-      <FormField label={`${t("value")} (${t("valueUnit")})`} htmlFor="value" error={errors.value?.message}>
-        <Input
-          id="value"
-          inputMode="numeric"
-          placeholder={t("valuePlaceholder")}
-          invalid={!!errors.value}
-          {...register("value")}
-        />
-      </FormField>
+      <TextField
+        label={`${t("value")} (${t("valueUnit")})`}
+        inputMode="numeric"
+        placeholder={t("valuePlaceholder")}
+        error={errors.value?.message}
+        {...register("value")}
+      />
 
-      <FormField label={t("type")} htmlFor="type" error={errors.type?.message}>
-        <Select id="type" options={typeOptions} invalid={!!errors.type} {...register("type")} />
-      </FormField>
+      <Controller
+        control={control}
+        name="type"
+        render={({ field, fieldState }) => (
+          <SelectField
+            label={t("type")}
+            value={field.value}
+            onChange={field.onChange}
+            options={typeOptions}
+            error={fieldState.error?.message}
+          />
+        )}
+      />
 
-      <FormField label={t("measuredAt")} htmlFor="measuredAt" error={errors.measuredAt?.message}>
-        <DateTimeField id="measuredAt" invalid={!!errors.measuredAt} {...register("measuredAt")} />
-      </FormField>
+      <Controller
+        control={control}
+        name="measuredAt"
+        render={({ field, fieldState }) => (
+          <DateTimeField
+            value={field.value}
+            onChange={field.onChange}
+            error={fieldState.error?.message}
+          />
+        )}
+      />
 
-      <FormField label={t("notes")} htmlFor="notes">
-        <TextArea id="notes" placeholder={t("notesPlaceholder")} {...register("notes")} />
-      </FormField>
+      <TextAreaField
+        label={t("notes")}
+        placeholder={t("notesPlaceholder")}
+        {...register("notes")}
+      />
 
       <div className="mt-2 flex justify-end gap-2">
         <Button type="button" variant="secondary" onClick={onCancel}>

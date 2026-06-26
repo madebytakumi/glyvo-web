@@ -4,8 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
-import { FormField } from "@/components/FormField";
+import { TextField } from "@/components/fields/TextField";
 import { authService } from "../service";
 import { signUpSchema, type SignUpValues } from "../schema";
 import { AuthShell } from "./SignInPage";
@@ -36,38 +35,28 @@ export function SignUpPage() {
         <p className="text-success">{t("checkEmail")}</p>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          <FormField label={t("displayName")} htmlFor="displayName">
-            <Input
-              id="displayName"
-              autoComplete="name"
-              placeholder={t("displayNamePlaceholder")}
-              {...register("displayName")}
-            />
-          </FormField>
-          <FormField label={t("email")} htmlFor="email" error={errors.email?.message}>
-            <Input
-              id="email"
-              type="email"
-              autoComplete="email"
-              placeholder={t("emailPlaceholder")}
-              invalid={!!errors.email}
-              {...register("email")}
-            />
-          </FormField>
-          <FormField
+          <TextField
+            label={t("displayName")}
+            autoComplete="name"
+            placeholder={t("displayNamePlaceholder")}
+            {...register("displayName")}
+          />
+          <TextField
+            label={t("email")}
+            type="email"
+            autoComplete="email"
+            placeholder={t("emailPlaceholder")}
+            error={errors.email?.message}
+            {...register("email")}
+          />
+          <TextField
             label={t("password")}
-            htmlFor="password"
+            type="password"
+            autoComplete="new-password"
+            placeholder={t("passwordPlaceholder")}
             error={errors.password?.message}
-          >
-            <Input
-              id="password"
-              type="password"
-              autoComplete="new-password"
-              placeholder={t("passwordPlaceholder")}
-              invalid={!!errors.password}
-              {...register("password")}
-            />
-          </FormField>
+            {...register("password")}
+          />
           {submitError && <p className="text-sm text-danger">{submitError}</p>}
           <Button type="submit" loading={isSubmitting}>
             {isSubmitting ? t("signingUp") : t("signUpCta")}

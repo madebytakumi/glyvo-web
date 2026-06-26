@@ -2,9 +2,9 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/Button";
-import { DateTimeField } from "@/components/DateTimeField";
-import { Select } from "@/components/Select";
-import { FormField } from "@/components/FormField";
+import { TimeField } from "@/components/fields/TimeField";
+import { SelectField } from "@/components/fields/SelectField";
+import { SwitchField } from "@/components/fields/SwitchField";
 import { scheduleFormSchema, type ScheduleFormValues } from "../schema";
 import {
   SCHEDULE_FREQUENCIES,
@@ -32,9 +32,8 @@ export function ScheduleForm({
   const { t: tc } = useTranslation("common");
 
   const {
-    register,
-    handleSubmit,
     control,
+    handleSubmit,
     watch,
     formState: { errors },
   } = useForm<ScheduleFormValues>({
@@ -65,14 +64,33 @@ export function ScheduleForm({
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-4">
-      <FormField label={t("time")} htmlFor="time" error={errors.time?.message}>
-        <DateTimeField id="time" mode="time" invalid={!!errors.time} {...register("time")} />
-      </FormField>
-      <FormField label={t("frequency")} htmlFor="frequency">
-        <Select id="frequency" options={freqOptions} {...register("frequency")} />
-      </FormField>
+      <Controller
+        control={control}
+        name="time"
+        render={({ field, fieldState }) => (
+          <TimeField
+            label={t("time")}
+            value={field.value}
+            onChange={field.onChange}
+            error={fieldState.error?.message}
+          />
+        )}
+      />
+      <Controller
+        control={control}
+        name="frequency"
+        render={({ field }) => (
+          <SelectField
+            label={t("frequency")}
+            value={field.value}
+            onChange={field.onChange}
+            options={freqOptions}
+          />
+        )}
+      />
       {frequency === "specific_days" && (
-        <FormField label={t("days")} error={errors.days?.message as string | undefined}>
+        <div className="flex flex-col gap-1.5">
+          <span className="text-sm font-medium text-text">{t("days")}</span>
           <Controller
             control={control}
             name="days"
@@ -80,12 +98,24 @@ export function ScheduleForm({
               <WeekdayPicker value={field.value} onChange={field.onChange} />
             )}
           />
-        </FormField>
+          {errors.days && (
+            <span className="text-xs text-danger">
+              {errors.days.message as string}
+            </span>
+          )}
+        </div>
       )}
-      <label className="flex items-center gap-2 text-text">
-        <input type="checkbox" className="size-4" {...register("active")} />
-        {t("active")}
-      </label>
+      <Controller
+        control={control}
+        name="active"
+        render={({ field }) => (
+          <SwitchField
+            label={t("active")}
+            checked={field.value}
+            onChange={field.onChange}
+          />
+        )}
+      />
 
       <div className="mt-2 flex justify-end gap-2">
         <Button type="button" variant="secondary" onClick={onCancel}>
