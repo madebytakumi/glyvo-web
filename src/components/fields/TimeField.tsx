@@ -102,13 +102,20 @@ export function TimeField({
               <Column items={HOURS} selected={hh} onPick={setHour} />
               <Column items={MINUTES} selected={mm} onPick={setMinute} />
             </div>
-            <div className="mt-1 flex justify-end border-t border-border pt-1">
+            <div className="mt-1 flex items-center justify-between border-t border-border pt-1">
               <button
                 type="button"
                 onClick={setNow}
-                className="rounded-lg px-3 py-1.5 text-sm font-medium text-primary hover:bg-primary-soft"
+                className="rounded-lg px-3 py-1.5 text-sm font-medium text-muted hover:bg-primary-soft hover:text-text"
               >
                 {t("now")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-1.5 text-sm font-semibold text-primary hover:bg-primary-soft"
+              >
+                {t("done")}
               </button>
             </div>
           </Popover.Content>
