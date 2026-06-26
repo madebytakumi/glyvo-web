@@ -17,11 +17,11 @@ export function AppLayout() {
       <Sidebar />
 
       <div className="lg:pl-64">
-        <header className="sticky top-0 z-10 border-b border-border bg-surface/80 px-4 py-3 backdrop-blur lg:hidden">
+        <header className="sticky top-0 z-10 border-b border-border bg-surface/80 px-4 pb-3 pt-[calc(env(safe-area-inset-top)_+_0.75rem)] backdrop-blur lg:hidden">
           <Brand />
         </header>
 
-        <main className="mx-auto max-w-6xl px-4 py-6 pb-24 lg:pb-10">
+        <main className="mx-auto max-w-6xl px-4 py-6 pb-[calc(6rem_+_env(safe-area-inset-bottom))] lg:pb-10">
           <Outlet />
         </main>
       </div>

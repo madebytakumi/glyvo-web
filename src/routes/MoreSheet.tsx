@@ -29,7 +29,7 @@ export function MoreSheet({ open, onClose }: MoreSheetProps) {
       role="presentation"
     >
       <div
-        className="w-full rounded-t-2xl border-t border-border bg-card p-3"
+        className="w-full rounded-t-2xl border-t border-border bg-card p-3 pb-[calc(env(safe-area-inset-bottom)_+_0.75rem)]"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
