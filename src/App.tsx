@@ -48,6 +48,10 @@ function AppRoutes() {
 
   return (
     <Routes>
+      {/* If already signed in, the auth routes redirect to the dashboard
+          (otherwise landing on /sign-in after login would hit NotFound). */}
+      <Route path="/sign-in" element={<Navigate to="/" replace />} />
+      <Route path="/sign-up" element={<Navigate to="/" replace />} />
       <Route element={<AppLayout />}>
         <Route index element={<DashboardPage />} />
         <Route path="glucose" element={<GlucoseListPage />} />
