@@ -47,7 +47,7 @@ export function InsulinFormPage() {
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-xl">
       <PageHeader title={isEdit ? t("editLog") : t("newLog")} />
       <Card>
         <InsulinForm

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Pill } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
@@ -17,6 +18,7 @@ export function MedicationCatalogPage() {
     <div>
       <PageHeader
         title={t("catalogTitle")}
+        icon={<Pill className="size-6" />}
         action={
           <Button size="sm" onClick={() => navigate("/medications/new")}>
             {t("newMedication")}
@@ -30,7 +32,7 @@ export function MedicationCatalogPage() {
       ) : !meds || meds.length === 0 ? (
         <EmptyState message={t("emptyMessage")} />
       ) : (
-        <ul className="flex flex-col gap-2">
+        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {meds.map((m) => (
             <li key={m.id}>
               <ListItem onClick={() => navigate(`/medications/${m.id}`)}>

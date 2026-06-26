@@ -47,7 +47,7 @@ export function GlucoseFormPage() {
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-xl">
       <PageHeader title={isEdit ? t("editReading") : t("newReading")} />
       <Card>
         <GlucoseForm

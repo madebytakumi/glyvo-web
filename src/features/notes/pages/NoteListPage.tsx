@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { StickyNote } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
@@ -24,6 +25,7 @@ export function NoteListPage() {
     <div>
       <PageHeader
         title={t("title")}
+        icon={<StickyNote className="size-6" />}
         action={
           <Button size="sm" onClick={() => navigate("/notes/new")}>
             {t("newNote")}
@@ -43,7 +45,7 @@ export function NoteListPage() {
       ) : !notes || notes.length === 0 ? (
         <EmptyState message={search ? tc("empty") : t("emptyMessage")} />
       ) : (
-        <ul className="flex flex-col gap-2">
+        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {notes.map((n) => (
             <li key={n.id}>
               <ListItem onClick={() => navigate(`/notes/${n.id}`)}>

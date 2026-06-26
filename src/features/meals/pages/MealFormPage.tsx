@@ -42,7 +42,7 @@ export function MealFormPage() {
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-xl">
       <PageHeader title={isEdit ? t("editMeal") : t("newMeal")} />
       <Card>
         <MealForm

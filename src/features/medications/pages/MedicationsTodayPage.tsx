@@ -34,7 +34,7 @@ export function MedicationsTodayPage() {
       ) : !doses || doses.length === 0 ? (
         <EmptyState message={t("noDosesMessage")} />
       ) : (
-        <ul className="flex flex-col gap-2">
+        <ul className="grid gap-3 lg:grid-cols-2">
           {doses.map((dose) => (
             <li key={`${dose.scheduleId}-${dose.scheduledTime}`}>
               <DoseItem dose={dose} />

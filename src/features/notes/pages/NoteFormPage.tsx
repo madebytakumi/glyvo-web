@@ -42,7 +42,7 @@ export function NoteFormPage() {
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-xl">
       <PageHeader title={isEdit ? t("editNote") : t("newNote")} />
       <Card>
         <NoteForm

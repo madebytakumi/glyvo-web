@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Syringe } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
@@ -22,6 +23,7 @@ export function InsulinListPage() {
     <div>
       <PageHeader
         title={t("title")}
+        icon={<Syringe className="size-6" />}
         action={
           <Button size="sm" onClick={() => navigate("/insulin/new")}>
             {t("newLog")}
@@ -41,7 +43,7 @@ export function InsulinListPage() {
       ) : !logs || logs.length === 0 ? (
         <EmptyState message={search ? tc("empty") : t("emptyMessage")} />
       ) : (
-        <ul className="flex flex-col gap-2">
+        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {logs.map((l) => (
             <li key={l.id}>
               <ListItem onClick={() => navigate(`/insulin/${l.id}`)}>

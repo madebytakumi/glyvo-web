@@ -70,7 +70,7 @@ export function SettingsPage() {
   ];
 
   return (
-    <div>
+    <div className="mx-auto max-w-2xl">
       <PageHeader title={t("title")} />
 
       <Section title={t("language")}>
