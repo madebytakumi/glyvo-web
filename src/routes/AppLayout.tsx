@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/cn";
-import { authService } from "@/features/auth/service";
 
 interface NavItem {
   to: string;
@@ -28,12 +27,6 @@ export function AppLayout() {
       <header className="sticky top-0 z-10 border-b border-border bg-surface/80 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3">
           <span className="text-lg font-bold text-primary">{t("appName")}</span>
-          <button
-            onClick={() => authService.signOut()}
-            className="text-sm text-muted hover:text-text"
-          >
-            {t("nav.settings")}
-          </button>
         </div>
         <nav className="mx-auto flex max-w-3xl gap-1 overflow-x-auto px-2 pb-2">
           {NAV.map((item) => (

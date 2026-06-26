@@ -12,7 +12,6 @@ import { authService } from "@/features/auth/service";
 import { initTheme } from "@/theme/themeStore";
 import { FullScreenSpinner } from "@/components/Spinner";
 import { AppLayout } from "@/routes/AppLayout";
-import { Placeholder } from "@/routes/Placeholder";
 import { SignInPage } from "@/features/auth/pages/SignInPage";
 import { SignUpPage } from "@/features/auth/pages/SignUpPage";
 import { GlucoseListPage } from "@/features/glucose/pages/GlucoseListPage";
@@ -28,6 +27,7 @@ import { MedicationCatalogPage } from "@/features/medications/pages/MedicationCa
 import { MedicationFormPage } from "@/features/medications/pages/MedicationFormPage";
 import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import { ReportsPage } from "@/features/reports/pages/ReportsPage";
+import { SettingsPage } from "@/features/settings/pages/SettingsPage";
 
 function AppRoutes() {
   const session = useAuthStore((s) => s.session);
@@ -66,7 +66,7 @@ function AppRoutes() {
         <Route path="notes/new" element={<NoteFormPage />} />
         <Route path="notes/:id" element={<NoteFormPage />} />
         <Route path="reports" element={<ReportsPage />} />
-        <Route path="settings" element={<Placeholder titleKey="nav.settings" />} />
+        <Route path="settings" element={<SettingsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
