@@ -1,56 +1,33 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/cn";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import { Brand } from "@/components/Brand";
+import { Sidebar } from "./Sidebar";
+import { BottomNav } from "./BottomNav";
+import { MoreSheet } from "./MoreSheet";
 
-interface NavItem {
-  to: string;
-  key: string;
-  end?: boolean;
-}
-
-const NAV: NavItem[] = [
-  { to: "/", key: "dashboard", end: true },
-  { to: "/glucose", key: "glucose" },
-  { to: "/meals", key: "meals" },
-  { to: "/insulin", key: "insulin" },
-  { to: "/medications", key: "medications" },
-  { to: "/notes", key: "notes" },
-  { to: "/reports", key: "reports" },
-  { to: "/settings", key: "settings" },
-];
-
+/**
+ * Responsive app shell: fixed sidebar on desktop (lg+), top bar + bottom tab bar
+ * on mobile. Content is a centered, wide container.
+ */
 export function AppLayout() {
-  const { t } = useTranslation("common");
+  const [moreOpen, setMoreOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-bg text-text">
-      <header className="sticky top-0 z-10 border-b border-border bg-surface/80 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3">
-          <span className="text-lg font-bold text-primary">{t("appName")}</span>
-        </div>
-        <nav className="mx-auto flex max-w-3xl gap-1 overflow-x-auto px-2 pb-2">
-          {NAV.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.end}
-              className={({ isActive }) =>
-                cn(
-                  "whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-medium transition-colors",
-                  isActive
-                    ? "bg-primary text-primary-fg"
-                    : "text-muted hover:bg-primary-soft hover:text-text",
-                )
-              }
-            >
-              {t(`nav.${item.key}`)}
-            </NavLink>
-          ))}
-        </nav>
-      </header>
-      <main className="mx-auto max-w-3xl px-4 py-6">
-        <Outlet />
-      </main>
+      <Sidebar />
+
+      <div className="lg:pl-64">
+        <header className="sticky top-0 z-10 border-b border-border bg-surface/80 px-4 py-3 backdrop-blur lg:hidden">
+          <Brand />
+        </header>
+
+        <main className="mx-auto max-w-6xl px-4 py-6 pb-24 lg:pb-10">
+          <Outlet />
+        </main>
+      </div>
+
+      <BottomNav onMore={() => setMoreOpen(true)} />
+      <MoreSheet open={moreOpen} onClose={() => setMoreOpen(false)} />
     </div>
   );
 }

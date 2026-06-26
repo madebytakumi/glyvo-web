@@ -36,7 +36,8 @@
     "medications": "Medications",
     "notes": "Notes",
     "reports": "Reports",
-    "settings": "Settings"
+    "settings": "Settings",
+    "more": "More"
   },
   "empty": "No records yet",
   "saving": "Saving…",
