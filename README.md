@@ -12,8 +12,18 @@ Supabase** (sin base de datos local ni sincronización).
 - **TanStack React Query** (caché de datos) · **React Router** (rutas)
 - **React Hook Form + Zod** (formularios y validación)
 - **i18next** (es/en) · **Zustand** (auth/tema)
+- **Recharts** (gráficas, lazy) · **lucide-react** (iconografía)
 - **@react-pdf/renderer** (export PDF, cargado por import dinámico)
 - **vite-plugin-pwa** (manifest + service worker) · **Vitest** (tests)
+
+## Diseño
+
+UI web-responsive con identidad **morado pastel**: sidebar fija en desktop +
+barra inferior en móvil (`src/routes/`), grids multi-columna, gráficas (tendencia
+de glucosa + adherencia) y dos mascotas, un **Beagle** y un **Pug**
+(`src/components/mascots/`, SVG propio). Las zonas de glucosa y los estados se
+mantienen saturados por claridad médica. Íconos PWA: `npm run gen-icons`
+(rasteriza `public/mascots.svg`).
 
 ## Módulos
 
