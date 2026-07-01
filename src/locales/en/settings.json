@@ -18,6 +18,18 @@
     "iosStep3": "Confirm with \"Add\"",
     "desktopHint": "Open your browser menu and choose \"Install app\"."
   },
+  "glucoseRanges": {
+    "title": "Glucose ranges",
+    "description": "Set the limits (mg/dL) to match your target. The critical zone is automatic: anything above \"High\".",
+    "low": "Low: below",
+    "high": "Normal: up to",
+    "critical": "High: up to",
+    "criticalNote": "Critical: above {{value}} mg/dL (automatic)",
+    "save": "Save ranges",
+    "reset": "Reset",
+    "saved": "Ranges saved",
+    "invalid": "Must satisfy: Low < Normal < High, between {{min}} and {{max}} mg/dL."
+  },
   "account": "Account",
   "signOut": "Sign out",
   "sync": "Sync",

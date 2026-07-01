@@ -7,6 +7,7 @@ import { Spinner } from "@/components/Spinner";
 import { useAuthStore } from "@/features/auth/store";
 import { useGlucoseDailyStats } from "@/features/glucose/queries";
 import { classifyGlucose, zoneToTone } from "@/features/glucose/zones";
+import { useGlucoseThresholds } from "@/features/glucose/thresholdsStore";
 import { useAdherence, useTodayDoses } from "@/features/medications/queries";
 import { GlucoseTrendCard } from "@/components/charts/GlucoseTrendCard";
 import { AdherenceDonutCard } from "@/components/charts/AdherenceDonutCard";
@@ -32,6 +33,7 @@ export function DashboardPage() {
     "";
 
   const { data: stats, isLoading } = useGlucoseDailyStats();
+  const thresholds = useGlucoseThresholds((s) => s.thresholds);
   const { data: doses } = useTodayDoses();
   const { data: adherence } = useAdherence(7);
   const pending = doses?.filter((d) => d.status === "pending").length ?? 0;
@@ -58,7 +60,7 @@ export function DashboardPage() {
               <div className="flex items-center gap-2">
                 <span className="text-lg font-semibold">{stats.latest?.value}</span>
                 {stats.latest && (
-                  <Badge tone={zoneToTone[classifyGlucose(stats.latest.value)]}>
+                  <Badge tone={zoneToTone[classifyGlucose(stats.latest.value, thresholds)]}>
                     {stats.latest.value}
                   </Badge>
                 )}

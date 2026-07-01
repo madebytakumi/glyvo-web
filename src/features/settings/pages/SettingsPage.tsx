@@ -10,6 +10,7 @@ import { useAuthStore } from "@/features/auth/store";
 import { authService } from "@/features/auth/service";
 import { useThemeStore, type ThemePreference } from "@/theme/themeStore";
 import { InstallSection } from "../components/InstallSection";
+import { GlucoseRangesSection } from "../components/GlucoseRangesSection";
 
 interface Segment<T extends string> {
   value: T;
@@ -85,6 +86,8 @@ export function SettingsPage() {
       <Section title={t("appearance")}>
         <Segmented value={preference} options={themeOptions} onChange={setPreference} />
       </Section>
+
+      <GlucoseRangesSection />
 
       <InstallSection />
 

@@ -18,6 +18,18 @@
     "iosStep3": "Confirma con \"Agregar\"",
     "desktopHint": "Abre el menú de tu navegador y elige \"Instalar app\"."
   },
+  "glucoseRanges": {
+    "title": "Rangos de glucosa",
+    "description": "Ajusta los límites (mg/dL) según tu objetivo. La zona crítica es automática: cualquier valor por encima de \"Alta\".",
+    "low": "Baja: por debajo de",
+    "high": "Normal: hasta",
+    "critical": "Alta: hasta",
+    "criticalNote": "Crítica: por encima de {{value}} mg/dL (automático)",
+    "save": "Guardar rangos",
+    "reset": "Restablecer",
+    "saved": "Rangos guardados",
+    "invalid": "Deben cumplir: Baja < Normal < Alta, entre {{min}} y {{max}} mg/dL."
+  },
   "account": "Cuenta",
   "signOut": "Cerrar sesión",
   "sync": "Sincronización",

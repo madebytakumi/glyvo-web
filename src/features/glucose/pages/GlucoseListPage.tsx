@@ -12,6 +12,7 @@ import { Spinner } from "@/components/Spinner";
 import { formatDateTime } from "@/lib/datetime";
 import { useGlucoseList } from "../queries";
 import { classifyGlucose, zoneToTone } from "../zones";
+import { useGlucoseThresholds } from "../thresholdsStore";
 
 export function GlucoseListPage() {
   const { t, i18n } = useTranslation("glucose");
@@ -19,6 +20,7 @@ export function GlucoseListPage() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const { data: readings, isLoading } = useGlucoseList(search);
+  const thresholds = useGlucoseThresholds((s) => s.thresholds);
   const lang = i18n.language as "es" | "en";
 
   return (
@@ -49,7 +51,7 @@ export function GlucoseListPage() {
       ) : (
         <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {readings.map((r) => {
-            const zone = classifyGlucose(r.value);
+            const zone = classifyGlucose(r.value, thresholds);
             return (
               <li key={r.id}>
                 <ListItem onClick={() => navigate(`/glucose/${r.id}`)}>
