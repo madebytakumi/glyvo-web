@@ -28,6 +28,7 @@
     "save": "Save ranges",
     "reset": "Reset",
     "saved": "Ranges saved",
+    "saveError": "Couldn't save the ranges. Please try again.",
     "invalid": "Must satisfy: Low < Normal < High, between {{min}} and {{max}} mg/dL."
   },
   "account": "Account",

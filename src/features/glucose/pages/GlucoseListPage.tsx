@@ -12,7 +12,7 @@ import { Spinner } from "@/components/Spinner";
 import { formatDateTime } from "@/lib/datetime";
 import { useGlucoseList } from "../queries";
 import { classifyGlucose, zoneToTone } from "../zones";
-import { useGlucoseThresholds } from "../thresholdsStore";
+import { useGlucoseThresholds } from "@/features/profile/queries";
 
 export function GlucoseListPage() {
   const { t, i18n } = useTranslation("glucose");
@@ -20,7 +20,7 @@ export function GlucoseListPage() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const { data: readings, isLoading } = useGlucoseList(search);
-  const thresholds = useGlucoseThresholds((s) => s.thresholds);
+  const thresholds = useGlucoseThresholds();
   const lang = i18n.language as "es" | "en";
 
   return (

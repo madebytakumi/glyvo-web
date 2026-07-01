@@ -28,6 +28,7 @@
     "save": "Guardar rangos",
     "reset": "Restablecer",
     "saved": "Rangos guardados",
+    "saveError": "No se pudieron guardar los rangos. Intenta de nuevo.",
     "invalid": "Deben cumplir: Baja < Normal < Alta, entre {{min}} y {{max}} mg/dL."
   },
   "account": "Cuenta",

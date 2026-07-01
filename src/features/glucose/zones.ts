@@ -17,8 +17,8 @@ export interface GlucoseThresholds {
 
 export const DEFAULT_THRESHOLDS: GlucoseThresholds = {
   low: 70,
-  high: 180,
-  critical: 250,
+  high: 140,
+  critical: 200,
 };
 
 /**

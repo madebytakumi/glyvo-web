@@ -7,7 +7,7 @@ import { Spinner } from "@/components/Spinner";
 import { useAuthStore } from "@/features/auth/store";
 import { useGlucoseDailyStats } from "@/features/glucose/queries";
 import { classifyGlucose, zoneToTone } from "@/features/glucose/zones";
-import { useGlucoseThresholds } from "@/features/glucose/thresholdsStore";
+import { useGlucoseThresholds } from "@/features/profile/queries";
 import { useAdherence, useTodayDoses } from "@/features/medications/queries";
 import { GlucoseTrendCard } from "@/components/charts/GlucoseTrendCard";
 import { AdherenceDonutCard } from "@/components/charts/AdherenceDonutCard";
@@ -33,7 +33,7 @@ export function DashboardPage() {
     "";
 
   const { data: stats, isLoading } = useGlucoseDailyStats();
-  const thresholds = useGlucoseThresholds((s) => s.thresholds);
+  const thresholds = useGlucoseThresholds();
   const { data: doses } = useTodayDoses();
   const { data: adherence } = useAdherence(7);
   const pending = doses?.filter((d) => d.status === "pending").length ?? 0;

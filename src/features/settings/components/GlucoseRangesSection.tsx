@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card } from "@/components/Card";
 import { Button } from "@/components/Button";
 import { TextField } from "@/components/fields/TextField";
-import { useGlucoseThresholds } from "@/features/glucose/thresholdsStore";
-import { DEFAULT_THRESHOLDS } from "@/features/glucose/zones";
+import {
+  useGlucoseThresholds,
+  useUpdateGlucoseThresholds,
+} from "@/features/profile/queries";
+import { DEFAULT_THRESHOLDS, type GlucoseThresholds } from "@/features/glucose/zones";
 import { GLUCOSE_VALUE_MAX, GLUCOSE_VALUE_MIN } from "@/features/glucose/model";
 
-/** Settings section to configure the glucose zone thresholds (per device). */
+/** Settings section to configure the per-user glucose zone thresholds. */
 export function GlucoseRangesSection() {
   const { t } = useTranslation("settings");
-  const thresholds = useGlucoseThresholds((s) => s.thresholds);
-  const setThresholds = useGlucoseThresholds((s) => s.setThresholds);
-  const reset = useGlucoseThresholds((s) => s.reset);
+  const thresholds = useGlucoseThresholds();
+  const update = useUpdateGlucoseThresholds();
 
   const [low, setLow] = useState(String(thresholds.low));
   const [high, setHigh] = useState(String(thresholds.high));
@@ -20,10 +22,27 @@ export function GlucoseRangesSection() {
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
 
+  // Keep the draft in sync when the saved thresholds resolve/change.
+  useEffect(() => {
+    setLow(String(thresholds.low));
+    setHigh(String(thresholds.high));
+    setCritical(String(thresholds.critical));
+  }, [thresholds.low, thresholds.high, thresholds.critical]);
+
   const dirty = () => {
     setSaved(false);
     setError(null);
   };
+
+  function persist(next: GlucoseThresholds) {
+    update.mutate(next, {
+      onSuccess: () => {
+        setSaved(true);
+        setError(null);
+      },
+      onError: () => setError(t("glucoseRanges.saveError")),
+    });
+  }
 
   function save() {
     const l = Number(low);
@@ -40,18 +59,7 @@ export function GlucoseRangesSection() {
       setSaved(false);
       return;
     }
-    setThresholds({ low: l, high: h, critical: c });
-    setError(null);
-    setSaved(true);
-  }
-
-  function restore() {
-    reset();
-    setLow(String(DEFAULT_THRESHOLDS.low));
-    setHigh(String(DEFAULT_THRESHOLDS.high));
-    setCritical(String(DEFAULT_THRESHOLDS.critical));
-    setError(null);
-    setSaved(false);
+    persist({ low: l, high: h, critical: c });
   }
 
   return (
@@ -97,8 +105,14 @@ export function GlucoseRangesSection() {
       {saved && <p className="mt-2 text-sm text-success">{t("glucoseRanges.saved")}</p>}
 
       <div className="mt-4 flex gap-2">
-        <Button onClick={save}>{t("glucoseRanges.save")}</Button>
-        <Button variant="secondary" onClick={restore}>
+        <Button onClick={save} loading={update.isPending}>
+          {t("glucoseRanges.save")}
+        </Button>
+        <Button
+          variant="secondary"
+          disabled={update.isPending}
+          onClick={() => persist(DEFAULT_THRESHOLDS)}
+        >
           {t("glucoseRanges.reset")}
         </Button>
       </div>
