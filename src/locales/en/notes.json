@@ -18,5 +18,6 @@
   "validation": {
     "contentRequired": "Write the note content",
     "contentMax": "The note is too long"
-  }
+  },
+  "daySummary": "{{count}} notes"
 }

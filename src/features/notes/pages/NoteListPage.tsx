@@ -9,7 +9,9 @@ import { Badge } from "@/components/Badge";
 import { ListItem } from "@/components/ListItem";
 import { EmptyState } from "@/components/EmptyState";
 import { Spinner } from "@/components/Spinner";
-import { formatDateTime } from "@/lib/datetime";
+import { DayHeader } from "@/components/DayHeader";
+import { formatTime } from "@/lib/datetime";
+import { groupByDay } from "@/lib/groupByDay";
 import { useNoteList } from "../queries";
 import { parseTags } from "../model";
 
@@ -45,27 +47,37 @@ export function NoteListPage() {
       ) : !notes || notes.length === 0 ? (
         <EmptyState message={search ? tc("empty") : t("emptyMessage")} />
       ) : (
-        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-          {notes.map((n) => (
-            <li key={n.id}>
-              <ListItem onClick={() => navigate(`/notes/${n.id}`)}>
-                <div className="flex min-w-0 flex-col gap-1">
-                  <span className="font-medium">
-                    {n.title || n.content.slice(0, 40)}
-                  </span>
-                  <div className="flex flex-wrap gap-1">
-                    {parseTags(n.tags).map((tag) => (
-                      <Badge key={tag}>{tag}</Badge>
-                    ))}
-                  </div>
-                </div>
-                <span className="shrink-0 text-xs text-muted">
-                  {formatDateTime(n.noteAt, lang)}
-                </span>
-              </ListItem>
-            </li>
+        <div className="mx-auto max-w-2xl">
+          {groupByDay(notes, (n) => n.noteAt).map((group) => (
+            <section key={group.key}>
+              <DayHeader
+                dateIso={group.dateIso}
+                summary={t("daySummary", { count: group.items.length })}
+              />
+              <ul className="flex flex-col gap-2">
+                {group.items.map((n) => (
+                  <li key={n.id}>
+                    <ListItem onClick={() => navigate(`/notes/${n.id}`)}>
+                      <div className="flex min-w-0 flex-col gap-1">
+                        <span className="font-medium">
+                          {n.title || n.content.slice(0, 40)}
+                        </span>
+                        <div className="flex flex-wrap gap-1">
+                          {parseTags(n.tags).map((tag) => (
+                            <Badge key={tag}>{tag}</Badge>
+                          ))}
+                        </div>
+                      </div>
+                      <span className="shrink-0 text-xs text-muted">
+                        {formatTime(n.noteAt, lang)}
+                      </span>
+                    </ListItem>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

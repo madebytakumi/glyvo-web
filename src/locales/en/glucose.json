@@ -37,5 +37,6 @@
     "typeRequired": "Select the measurement type"
   },
   "saved": "Reading saved",
-  "added": "Reading logged"
+  "added": "Reading logged",
+  "daySummary": "{{count}} readings · avg {{avg}} · {{min}}–{{max}}"
 }

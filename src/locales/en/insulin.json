@@ -20,5 +20,6 @@
     "unitsRequired": "Enter the units",
     "unitsNumber": "Units must be a number",
     "unitsRange": "Units must be between 0.5 and 300"
-  }
+  },
+  "daySummary": "{{count}} · {{units}} U"
 }

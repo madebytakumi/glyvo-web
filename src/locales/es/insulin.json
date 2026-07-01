@@ -20,5 +20,6 @@
     "unitsRequired": "Ingresa las unidades",
     "unitsNumber": "Las unidades deben ser un número",
     "unitsRange": "Las unidades deben estar entre 0.5 y 300"
-  }
+  },
+  "daySummary": "{{count}} · {{units}} U"
 }

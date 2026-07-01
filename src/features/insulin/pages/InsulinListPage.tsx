@@ -8,7 +8,9 @@ import { Input } from "@/components/Input";
 import { ListItem } from "@/components/ListItem";
 import { EmptyState } from "@/components/EmptyState";
 import { Spinner } from "@/components/Spinner";
-import { formatDateTime } from "@/lib/datetime";
+import { DayHeader } from "@/components/DayHeader";
+import { formatTime } from "@/lib/datetime";
+import { groupByDay } from "@/lib/groupByDay";
 import { useInsulinList } from "../queries";
 
 export function InsulinListPage() {
@@ -43,23 +45,42 @@ export function InsulinListPage() {
       ) : !logs || logs.length === 0 ? (
         <EmptyState message={search ? tc("empty") : t("emptyMessage")} />
       ) : (
-        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-          {logs.map((l) => (
-            <li key={l.id}>
-              <ListItem onClick={() => navigate(`/insulin/${l.id}`)}>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-lg font-semibold">{l.name}</span>
-                  <span className="text-sm text-muted">
-                    {l.units} {t("unitsShort")}
-                  </span>
-                </div>
-                <span className="text-xs text-muted">
-                  {formatDateTime(l.administeredAt, lang)}
-                </span>
-              </ListItem>
-            </li>
-          ))}
-        </ul>
+        <div className="mx-auto max-w-2xl">
+          {groupByDay(logs, (l) => l.administeredAt).map((group) => {
+            const totalUnits =
+              Math.round(
+                group.items.reduce((a, l) => a + l.units, 0) * 100,
+              ) / 100;
+            return (
+              <section key={group.key}>
+                <DayHeader
+                  dateIso={group.dateIso}
+                  summary={t("daySummary", {
+                    count: group.items.length,
+                    units: totalUnits,
+                  })}
+                />
+                <ul className="flex flex-col gap-2">
+                  {group.items.map((l) => (
+                    <li key={l.id}>
+                      <ListItem onClick={() => navigate(`/insulin/${l.id}`)}>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-lg font-semibold">{l.name}</span>
+                          <span className="text-sm text-muted">
+                            {l.units} {t("unitsShort")}
+                          </span>
+                        </div>
+                        <span className="text-xs text-muted">
+                          {formatTime(l.administeredAt, lang)}
+                        </span>
+                      </ListItem>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            );
+          })}
+        </div>
       )}
     </div>
   );

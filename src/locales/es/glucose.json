@@ -37,5 +37,6 @@
     "typeRequired": "Selecciona el tipo de medición"
   },
   "saved": "Medición guardada",
-  "added": "Medición registrada"
+  "added": "Medición registrada",
+  "daySummary": "{{count}} med · prom {{avg}} · {{min}}–{{max}}"
 }

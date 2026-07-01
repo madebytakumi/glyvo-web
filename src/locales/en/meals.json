@@ -22,5 +22,6 @@
   "validation": {
     "typeRequired": "Select the meal type",
     "descriptionMax": "The description is too long"
-  }
+  },
+  "daySummary": "{{count}} meals"
 }

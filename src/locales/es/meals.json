@@ -22,5 +22,6 @@
   "validation": {
     "typeRequired": "Selecciona el tipo de comida",
     "descriptionMax": "La descripción es demasiado larga"
-  }
+  },
+  "daySummary": "{{count}} comidas"
 }
