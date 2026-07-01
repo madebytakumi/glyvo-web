@@ -24,12 +24,12 @@ export function MoreSheet({ open, onClose }: MoreSheetProps) {
 
   return (
     <div
-      className="fixed inset-0 z-30 flex items-end bg-black/40 lg:hidden"
+      className="sheet-backdrop fixed inset-0 z-30 flex items-end bg-black/40 lg:hidden"
       onClick={onClose}
       role="presentation"
     >
       <div
-        className="w-full rounded-t-2xl border-t border-border bg-card p-3 pb-[calc(env(safe-area-inset-bottom)_+_0.75rem)]"
+        className="sheet-panel w-full rounded-t-2xl border-t border-border bg-card p-3 pb-[calc(env(safe-area-inset-bottom)_+_0.75rem)]"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
